@@ -25,6 +25,6 @@ jobs:
         bundler-cache: true
     - name: Run the default task
       run: bundle exec rake
-      run: linter
-      run: testing  
+      run: rubocop
+        
 
