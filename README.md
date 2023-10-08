@@ -17,7 +17,7 @@ If bundler is not being used to manage dependencies, install the gem by executin
     $ gem install UPDATE_WITH_YOUR_GEM_NAME_PRIOR_TO_RELEASE_TO_RUBYGEMS_ORG
 
 ## Usage
-a
+
 TODO: Write usage instructions here
 
 ## Development
