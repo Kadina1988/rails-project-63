@@ -1,6 +1,6 @@
 ![CI](https://github.com/Kadina1988/rails-project-63/actions/workflows/hexlet-check.yml/badge.svg)
 
-![CI](https://github.com/Kadina1988/rails-project-63/actions/workflows/ci.yml/badge.svg)
+![CI](https://github.com/Kadina1988/rails-project-63/actions/workflows/main.yml/badge.svg)
 
 # HexletCode
 
