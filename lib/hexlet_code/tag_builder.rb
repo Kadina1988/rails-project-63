@@ -1,6 +1,5 @@
 module HexletCode
   class TagBuilder
-
     def create_html_tag(tag, params)
       if params.empty?
         "<#{tag}>"

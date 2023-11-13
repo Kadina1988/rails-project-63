@@ -19,5 +19,3 @@ module HexletCode
   class Error < StandardError; end
   # Your code goes here...
 end
-
-User = Struct.new(:name, :job, keyword_init:true)
