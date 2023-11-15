@@ -27,13 +27,6 @@ class TestHexletCode < Minitest::Test
     assert_equal(expect, actual)
   end
 
-  def test_method_build_with_block
-    expect = "<label for='email'>Email</label>"
-    actual = HexletCode::Tag.build('label', for: 'email') { 'Email' }
-
-    assert_equal(expect, actual)
-  end
-
   def test_form_for_without_path
     expect = "<form action='#' method='post'></form>"
 
@@ -53,7 +46,7 @@ class TestHexletCode < Minitest::Test
   end
 
   def test_form_for_with_additional_parametres
-    expect = "<form action='#' method='post'><input name='name' type='text' value='Rob'></form>"
+    expect = "<form action='#' method='post'><label for='name'>Name</label> <input name='name' type='text' value='Rob'></form>"
 
     actual = HexletCode.form_for @user, url: '#' do |f|
       f.input :name
@@ -63,7 +56,7 @@ class TestHexletCode < Minitest::Test
   end
 
   def test_form_for_with_class
-    expect = "<form action='#' method='post'><input name='name' type='text' value='Rob' class='input'></form>"
+    expect = "<form action='#' method='post'><label for='name'>Name</label> <input name='name' type='text' value='Rob' class='input'></form>"
 
     actual = HexletCode.form_for @user do |f|
       f.input :name, class: 'input'
@@ -72,7 +65,7 @@ class TestHexletCode < Minitest::Test
   end
 
   def test_form_for_with_defolt_value
-    expect = "<form action='#' method='post'><textarea rows='20' cols='20' name='job'>hexlet</textarea></form>"
+    expect = "<form action='#' method='post'><textarea name='job' rows='20' cols='20'>hexlet</textarea></form>"
 
     actual = HexletCode.form_for @user do |f|
       f.input :job, as: :text
@@ -82,22 +75,31 @@ class TestHexletCode < Minitest::Test
   end
 
   def test_form_for_with_user_value
-    expect = "<form action='#' method='post'><textarea rows='30' cols='30' name='job'>hexlet</textarea></form>"
+    expect = "<form action='#' method='post'><textarea rows='55' cols='55' name='job'>hexlet</textarea></form>"
 
     actual = HexletCode.form_for @user do |f|
-      f.input :job, as: :text, rows: 30, cols: 30
+      f.input :job, as: :text, rows: 55, cols: 55
     end
 
     assert_equal(expect, actual)
   end
 
   def test_form_for_two_attr
-    expect = "<form action='/user' method='post'><input name='name' type='text' value='Rob' class='input'> <textarea rows='20' cols='20' name='job'>hexlet</textarea></form>"
+    expect = "<form action='/user' method='post'><label for='name'>Name</label> <input name='name' type='text' value='Rob' class='input'> <textarea name='job' rows='20' cols='20'>hexlet</textarea> <input type='submit' value='wow'></form>"
 
     actual = HexletCode.form_for @user, url: '/user' do |f|
       f.input :name, class: 'input'
       f.input :job, as: :text
+      f.submit 'wow'
     end
+
+    assert_equal(expect, actual)
+  end
+
+  def test_default_submit
+    expect = "<form action='#' method='post'><input type='submit' value='Save'></form>"
+
+    actual = HexletCode.form_for @user, &:submit
 
     assert_equal(expect, actual)
   end

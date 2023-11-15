@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module HexletCode
   class TagBuilder
     def create_html_tag(tag, params)

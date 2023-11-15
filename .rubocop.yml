@@ -1,0 +1,16 @@
+Layout/LineLength:
+  Exclude:
+    - 'test/**/*.rb'
+
+Metrics/MethodLength:
+  Max: 20
+
+Style/Documentation:
+  Enabled: false
+
+Gemspec/RequiredRubyVersion:
+   Enabled: false
+
+Metrics/AbcSize:
+  Enabled: false
+

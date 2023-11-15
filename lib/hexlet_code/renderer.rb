@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module HexletCode
   class Renderer
     def initialize(obj, tags)
@@ -22,42 +24,16 @@ module HexletCode
 
     def generate_field
       @args.each do |arg|
-        generate_input(arg[1], arg) if arg[1] == 'input'
-
-        generate_textarea(arg[1], arg) if arg[1] == 'textarea'
+        if arg[0] == 'textarea'
+          @html << HexletCode::Tag.build(arg[0], arg[1]) { @form.obj.public_send(arg[2]) }
+        elsif arg[1][:type] == 'submit'
+          @html << HexletCode::Tag.build(arg[0], arg[1])
+        else
+          @html << HexletCode::Tag.build('label', for: arg[2]) { arg[2].to_s.capitalize }
+          @html << HexletCode::Tag.build(arg[0], arg[1])
+        end
       end
       @html.join(' ')
-    end
-
-    def generate_input(tag, param)
-      if param[2].any? && param[2].has_key?(:class)
-        @html << HexletCode::Tag.build(tag, name: "#{param[0]}", type: 'text',
-                                            value: "#{@form.obj.public_send(param[0])}", class: "#{param[2][:class]}")
-      else
-        @html << HexletCode::Tag.build(tag, name: "#{param[0]}", type: 'text',
-                                            value: "#{@form.obj.public_send(param[0])}")
-      end
-    end
-
-    def generate_textarea(tag, param)
-      default_rows = 20
-      default_cols = 20
-
-      rows =  if param[2].any? && param[2].has_key?(:rows)
-                param[2][:rows]
-              else
-                default_rows
-              end
-
-      cols =  if param[2].any? && param[2].has_key?(:cols)
-                param[2][:cols]
-              else
-                default_cols
-              end
-
-      @html << HexletCode::Tag.build(tag, rows: "#{rows}", cols: "#{cols}", name: "#{param[0]}") do
-        "#{@form.obj.public_send(param[0])}"
-      end
     end
   end
 end
