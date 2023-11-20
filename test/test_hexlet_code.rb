@@ -85,7 +85,7 @@ class TestHexletCode < Minitest::Test
   end
 
   def test_form_for_two_attr
-    expect = "<form action='/user' method='post'><label for='name'>Name</label> <input name='name' type='text' value='Rob' class='input'> <textarea name='job' rows='20' cols='20'>hexlet</textarea> <input type='submit' value='wow'></form>"
+    expect = "<form action='/user' method='post'><label for='name'>Name</label> <input name='name' type='text' value='Rob' class='input'> <textarea name='job' rows='20' cols='20'>hexlet</textarea> <input type='Submit' value='wow'></form>"
 
     actual = HexletCode.form_for @user, url: '/user' do |f|
       f.input :name, class: 'input'
@@ -97,7 +97,7 @@ class TestHexletCode < Minitest::Test
   end
 
   def test_default_submit
-    expect = "<form action='#' method='post'><input type='submit' value='Save'></form>"
+    expect = "<form action='#' method='post'><input type='Submit' value='Save'></form>"
 
     actual = HexletCode.form_for @user, &:submit
 

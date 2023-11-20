@@ -1,5 +1,9 @@
 # frozen_string_literal: true
 
+require_relative 'input'
+require_relative 'text'
+require_relative 'label'
+
 module HexletCode
   class Form
     attr_reader :fields, :obj
@@ -10,47 +14,17 @@ module HexletCode
     end
 
     def input(attr, params = {})
-      attributes = []
-
-      if params[:as] == :text
-        tag = 'textarea'
-        param = create_params_for_text(attr, params)
+      if params.key?(:as) && (params[:as] = :text)
+        @fields << HexletCode::Text.new(@obj.public_send(attr), attr, params)
       else
-        tag = 'input'
-        param = create_params_for_input(attr, params)
+        @fields << HexletCode::Label.new(attr, @obj.public_send(attr))
+        @fields << HexletCode::Input.new({ name: attr.to_s, type: 'text', value: @obj.public_send(attr) },
+                                         params)
       end
-
-      attributes << tag << param << attr
-      @fields << attributes
     end
 
     def submit(name = 'Save')
-      tag = 'input'
-      attr = []
-      attr << tag << { type: 'submit', value: name }
-      @fields << attr
-    end
-
-    private
-
-    def create_params_for_input(attr, params)
-      value = @obj.public_send(attr)
-
-      if params.key?(:class)
-        { name: attr.to_s, type: 'text', value: value, class: params[:class] }
-      else
-        { name: attr.to_s, type: 'text', value: value }
-      end
-    end
-
-    def create_params_for_text(attr, params)
-      name_attr = attr.to_s
-
-      if params.key?(:rows) && params.key?(:cols)
-        { rows: params[:rows], cols: params[:cols], name: name_attr }
-      else
-        { name: name_attr, rows: 20, cols: 20 }
-      end
+      @fields << HexletCode::Input.new(type: 'Submit', value: name)
     end
   end
 end

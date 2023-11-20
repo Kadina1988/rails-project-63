@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require 'erb'
 require_relative 'hexlet_code/version'
 
 module HexletCode
@@ -17,5 +16,4 @@ module HexletCode
   end
 
   class Error < StandardError; end
-  # Your code goes here...
 end
