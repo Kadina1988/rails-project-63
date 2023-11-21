@@ -103,4 +103,14 @@ class TestHexletCode < Minitest::Test
 
     assert_equal(expect, actual)
   end
+
+  def test_with_tag_form
+    expect = "<form action='/profile' method='get'><input type='submit' value='Save'></form>"
+
+    actual = HexletCode.form_for @user, action: '/profile', method: 'get', class: 'hexlet-form' do |f|
+      f.submit
+    end
+
+    assert_equal(expect, actual)
+  end
 end
