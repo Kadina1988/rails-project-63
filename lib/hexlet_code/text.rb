@@ -14,7 +14,7 @@ module HexletCode
       @attrs = if params.key?(:rows) && params.key?(:cols)
                  { rows: params[:rows], cols: params[:cols], name: name.to_s }
                else
-                 { name: rows: '50', cols: '50', name.to_s }
+                 { rows: '50', cols: '50', name: name.to_s }
                end
     end
   end
