@@ -46,7 +46,9 @@ class TestHexletCode < Minitest::Test
   end
 
   def test_form_for_with_additional_parametres
-    expect = "<form action='#' method='post'><label for='name'>Name</label> <input name='name' type='text' value='Rob'></form>"
+    expect = "<form action='#' method='post'>
+                <label for='name'>Name</label> <input name='name' type='text' value='Rob'>
+               </form>"
 
     actual = HexletCode.form_for @user, url: '#' do |f|
       f.input :name

@@ -28,7 +28,7 @@ module HexletCode
                    HexletCode::Tag.build(arg.tag, arg.attrs) { arg.content }
                  end
       end
-      @html.join(' ')
+      @html.join(' ' )
     end
   end
 end
