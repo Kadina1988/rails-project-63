@@ -11,7 +11,7 @@ module HexletCode
     end
 
     def render(params = {})
-      generate_form(params) { generate_field }
+      {generate_form(params) { generate_field }}
     end
 
     private
