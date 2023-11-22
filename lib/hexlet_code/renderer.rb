@@ -33,7 +33,7 @@ module HexletCode
           @html << HexletCode::Tag.build(arg[0], arg[1])
         end
       end
-      @html.join(' ')
+      @html.join(' ') #
     end
   end
 end
