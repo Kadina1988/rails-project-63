@@ -65,7 +65,7 @@ class TestHexletCode < Minitest::Test
   end
 
   def test_form_for_with_defolt_value
-    expect = "<form action='#' method='post'><textarea rows='50' cols='50' name='Job'>hexlet</textarea></form>"
+    expect = "<form action='#' method='post'><textarea rows='50' cols='50' name='job'>hexlet</textarea></form>"
 
     actual = HexletCode.form_for @user do |f|
       f.input :job, as: :text
@@ -75,7 +75,7 @@ class TestHexletCode < Minitest::Test
   end
 
   def test_form_for_with_user_value
-    expect = "<form action='#' method='post'><textarea rows='55' cols='55' name='Job'>hexlet</textarea></form>"
+    expect = "<form action='#' method='post'><textarea rows='55' cols='55' name='job'>hexlet</textarea></form>"
 
     actual = HexletCode.form_for @user do |f|
       f.input :job, as: :text, rows: 55, cols: 55
@@ -85,7 +85,7 @@ class TestHexletCode < Minitest::Test
   end
 
   def test_form_for_two_attr
-    expect = "<form action='/user' method='post'><label for='name'>Name</label> <input name='name' type='text' value='Rob' class='input'> <textarea rows='50' cols='50' name='Job'>hexlet</textarea> <input type='submit' value='wow'></form>"
+    expect = "<form action='/user' method='post'><label for='name'>Name</label> <input name='name' type='text' value='Rob' class='input'> <textarea rows='50' cols='50' name='joooob'>hexlet</textarea> <input type='submit' value='wow'></form>"
 
     actual = HexletCode.form_for @user, url: '/user' do |f|
       f.input :name, class: 'input'
@@ -110,5 +110,9 @@ class TestHexletCode < Minitest::Test
     actual = HexletCode.form_for @user, action: '/profile', method: 'get', class: 'hexlet-form', &:submit
 
     assert_equal(expect, actual)
+
+    def test_with_tag_label_for_job
+      expemt = "<"
+    end
   end
 end

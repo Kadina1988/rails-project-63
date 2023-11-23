@@ -17,7 +17,7 @@ module HexletCode
     private
 
     def generate_form(params = {}, &block)
-      HexletCode::Tag.build("form", action: params[:url] || params[:action] || '#',
+      HexletCode::Tag.build('form', action: params[:url] || params[:action] || '#',
                                     method: params[:method] || 'post') do
         block.call
       end

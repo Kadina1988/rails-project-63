@@ -11,8 +11,7 @@ module HexletCode
     end
 
     def collecting_attrs(name, params)
-      @attrs =  { rows: params[:rows] || 50, cols: params[:cols] || 50 , name: name.to_s.capitalize }
-
+      @attrs = { rows: params[:rows] || 50, cols: params[:cols] || 50, name: name.to_s }
     end
   end
 end
