@@ -11,11 +11,8 @@ module HexletCode
     end
 
     def collecting_attrs(name, params)
-      @attrs = if params.key?(:rows) && params.key?(:cols)
-                 { rows: params[:rows], cols: params[:cols], name: name.to_s }
-               else
-                 { rows: '50', cols: '50', name: name.to_s }
-               end
+      { rows: params[:rows] || 50, cols: params[:cols] || 50 , name: name.to_s.capitalize }
+
     end
   end
 end
