@@ -7,8 +7,7 @@ module HexletCode
     def initialize(attr, _content)
       @tag = 'label'
       @content = attr.to_s.capitalize
-      @attrs = {}
-      @attrs[:for] = attr.to_s
+      @attrs = { for: attr.to_s}
     end
   end
 end

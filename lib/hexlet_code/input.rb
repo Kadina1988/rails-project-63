@@ -6,8 +6,7 @@ module HexletCode
 
     def initialize(attrs, params = {})
       @tag = 'input'
-      @attrs = attrs
-      @attrs.merge!(params)
+      @attrs = attrs.merge!(params)
       @content = nil
     end
   end

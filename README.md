@@ -3,6 +3,7 @@
 ![CI](https://github.com/Kadina1988/rails-project-63/actions/workflows/main.yml/badge.svg)
 
 Modlule HexletCode create html input
+=====================================
 
 Expample
 
@@ -10,9 +11,9 @@ Expample
 
 with url
 
-  HexletCode.form_for @user, url: '/user' do |f|
-    f.input :name
-  end =>
+    HexletCode.form_for @user, url: '/user' do |f|
+      f.input :name
+    end
 
    <form action='/user' method='post'>
      <label for='name'>Name</label>
