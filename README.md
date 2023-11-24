@@ -13,9 +13,13 @@ For expample
 
 with url
 
+```
+
   <HexletCode.form_for @user, url: '/user' do |f|>
     <f.input :name>
   <end>
+
+```
 
   <form action='/user' method='post'>
     <label for='name'>Name</label>
