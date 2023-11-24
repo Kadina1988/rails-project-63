@@ -9,9 +9,12 @@ Modlule HexletCode
 
 For expample
 
-  <@object = User.new name: 'Bob', job: 'developer'>
+```
+@object = User.new name: 'Bob', job: 'developer'>
 
-with url
+```
+
+with url:
 
 ```
 
@@ -20,11 +23,14 @@ with url
   <end>
 
 ```
+do:
 
+```
   <form action='/user' method='post'>
     <label for='name'>Name</label>
     <input name='name' type='text' value='Bob'>
   </form>
+```
 
 without url :
 
