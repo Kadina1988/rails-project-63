@@ -8,7 +8,7 @@ Modlule HexletCode
 ## HecletCode create html form
 
 For expample
-
+------------
 <@object = User.new name: 'Bob', job: 'developer'>
 
 with url
@@ -21,7 +21,7 @@ with url
   <label for='name'>Name</label>
   <input name='name' type='text' value='Bob'>
 </form>
---------------------------------------------------
+
 without url :
 
     HexletCode.form_for @user do |f|
