@@ -23,10 +23,8 @@ With url:
   <f.input :name>
 <end>
 
-```
-do:
+ =>
 
-```
 <form action='/user' method='post'>
   <label for='name'>Name</label>
   <input name='name' type='text' value='Bob'>
@@ -40,7 +38,7 @@ HexletCode.form_for @user do |f|
   f.input :name
 end
 
-do:
+=>
 
 <form action='#' method='post'>
   <label for='name'>Name</label>
@@ -49,30 +47,46 @@ do:
 
 ```
 
-There is option as: :text, create tag <textarea>
+######There is option text
 
-   HexletCode.form_for @user do |f|
-      f.input :name, as: :text
-    end =>
 
-      <form action='#' method='post'>
-        <textarea name='name' rows='20' cols='20'>Bob</textarea>
-      </form>
+```
+HexletCode.form_for @user do |f|
+  f.input :name, as: :text
+end
+
+=>
+
+<form action='#' method='post'>
+  <textarea name='name' rows='20' cols='20'>Bob</textarea>
+</form>
+
+```
 
 create type Sumbit
 
-  HexletCode.form_for do |f|
-    f.sumbit
-  end =>
+```
 
-  <form action='#' method='post'>
-    <input type='Submit' value='name'>
-  </form>
+HexletCode.form_for do |f|
+  f.sumbit
+end
+
+=>
+
+<form action='#' method='post'>
+  <input type='Submit' value='name'>
+</form>
+
+```
 
 Can add class :
+
+```
   HexletCode.form_for @user do |f|
     f.input :name, class: 'input'  => <input name='name' type='text' value='Bob' class='input'>
-  end =>
+  end
+
+```
 
 
 
