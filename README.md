@@ -1,13 +1,13 @@
-![CI](https://github.com/Kadina1988/rails-project-63/actions/workflows/hexlet-check.yml/badge.svg)
+![CI](https://github.com/Kadina1988/rails-project-63/actions/workflows/hexlet-check.yml/badge.https://github.com/Kadina1988/rails-project-63/actions)
 
 ![CI](https://github.com/Kadina1988/rails-project-63/actions/workflows/main.yml/badge.svg)
 
-Modlule HexletCode
+Module HexletCode
 ==================
 
-## HecletCode create html form
+## HexletCode create html form
 
-For expample
+For example
 
 create object
 
@@ -19,7 +19,7 @@ create object
 With url:
 
 ```
-<HexletCode.form_for @user, url: '/user' do |f|>
+<HexletCode.form_for @object, url: '/user' do |f|>
   <f.input :name>
 <end>
 
@@ -34,7 +34,7 @@ With url:
 Without url :
 
 ```
-HexletCode.form_for @user do |f|
+HexletCode.form_for @object do |f|
   f.input :name
 end
 
@@ -42,23 +42,23 @@ end
 
 <form action='#' method='post'>
   <label for='name'>Name</label>
-  <label for='a'>A</label>
+  <input name='name' type='text' value='Bob'>
 </form>
 
 ```
 
-######There is option text
+There is option text
 
 
 ```
-HexletCode.form_for @user do |f|
-  f.input :name, as: :text
+HexletCode.form_for @object do |f|
+  f.input :job, as: :text
 end
 
 =>
 
 <form action='#' method='post'>
-  <textarea name='name' rows='20' cols='20'>Bob</textarea>
+  <textarea name='job' rows='20' cols='20'>developer</textarea>
 </form>
 
 ```
@@ -67,7 +67,7 @@ create type Sumbit
 
 ```
 
-HexletCode.form_for do |f|
+HexletCode.form_for @object do |f|
   f.sumbit
 end
 
@@ -82,7 +82,7 @@ end
 Can add class :
 
 ```
-  HexletCode.form_for @user do |f|
+  HexletCode.form_for @object do |f|
     f.input :name, class: 'input'  => <input name='name' type='text' value='Bob' class='input'>
   end
 
