@@ -9,39 +9,45 @@ Modlule HexletCode
 
 For expample
 
+create object
+
 ```
 @object = User.new name: 'Bob', job: 'developer'>
 
 ```
 
-with url:
+With url:
 
 ```
-
-  <HexletCode.form_for @user, url: '/user' do |f|>
-    <f.input :name>
-  <end>
+<HexletCode.form_for @user, url: '/user' do |f|>
+  <f.input :name>
+<end>
 
 ```
 do:
 
 ```
-  <form action='/user' method='post'>
-    <label for='name'>Name</label>
-    <input name='name' type='text' value='Bob'>
-  </form>
+<form action='/user' method='post'>
+  <label for='name'>Name</label>
+  <input name='name' type='text' value='Bob'>
+</form>
 ```
 
-without url :
+Without url :
 
-    HexletCode.form_for @user do |f|
-      f.input :name
-    end =>
+```
+HexletCode.form_for @user do |f|
+  f.input :name
+end
 
-   <form action='#' method='post'>
-     <label for='name'>Name</label>
-     <label for='a'>A</label>
-   </form>
+do:
+
+<form action='#' method='post'>
+  <label for='name'>Name</label>
+  <label for='a'>A</label>
+</form>
+
+```
 
 There is option as: :text, create tag <textarea>
 
