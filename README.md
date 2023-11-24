@@ -2,8 +2,10 @@
 
 ![CI](https://github.com/Kadina1988/rails-project-63/actions/workflows/main.yml/badge.svg)
 
-Modlule HexletCode create html input
-=====================================
+Modlule HexletCode
+==================
+
+## HecletCode created html form
 
 Expample
 
