@@ -5,23 +5,23 @@
 Modlule HexletCode
 ==================
 
-## HecletCode created html form
+## HecletCode create html form
 
-Expample
+For expample
 
-@user = User.new name: 'Bob', job: 'developer'
+<@object = User.new name: 'Bob', job: 'developer'>
 
 with url
 
-    HexletCode.form_for @user, url: '/user' do |f|
-      f.input :name
-    end
+<HexletCode.form_for @user, url: '/user' do |f|>
+  <f.input :name>
+<end>
 
-   <form action='/user' method='post'>
-     <label for='name'>Name</label>
-     <input name='name' type='text' value='Bob'>
-   </form>
-
+<form action='/user' method='post'>
+  <label for='name'>Name</label>
+  <input name='name' type='text' value='Bob'>
+</form>
+--------------------------------------------------
 without url :
 
     HexletCode.form_for @user do |f|
