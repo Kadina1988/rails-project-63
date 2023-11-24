@@ -8,19 +8,19 @@ Modlule HexletCode
 ## HecletCode create html form
 
 For expample
-------------
-<@object = User.new name: 'Bob', job: 'developer'>
+
+  <@object = User.new name: 'Bob', job: 'developer'>
 
 with url
 
-<HexletCode.form_for @user, url: '/user' do |f|>
-  <f.input :name>
-<end>
+  <HexletCode.form_for @user, url: '/user' do |f|>
+    <f.input :name>
+  <end>
 
-<form action='/user' method='post'>
-  <label for='name'>Name</label>
-  <input name='name' type='text' value='Bob'>
-</form>
+  <form action='/user' method='post'>
+    <label for='name'>Name</label>
+    <input name='name' type='text' value='Bob'>
+  </form>
 
 without url :
 
