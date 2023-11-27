@@ -24,7 +24,7 @@ module HexletCode
     end
 
     def submit(name = 'Save')
-      @fields << HexletCode::Input.new(type: 'submit', value: name)
+      @fields << HexletCode::Input.new(type: 'Submit', value: name)
     end
   end
 end
