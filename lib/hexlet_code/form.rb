@@ -14,17 +14,14 @@ module HexletCode
     end
 
     def input(attr, params = {})
-      if params.key?(:as) && (params[:as] = :text)
-        @fields << HexletCode::Text.new(@obj.public_send(attr), attr, params)
-      else
-        label(attr, params)
-        @fields << HexletCode::Input.new({ name: attr.to_s, type: 'text', value: @obj.public_send(attr) },
-                                         params)
-      end
-    end
-
-    def label(attr, params = {})
       @fields << HexletCode::Label.new(attr, @obj.public_send(attr))
+
+      @fields << if params.key?(:as) && (params[:as] = :text)
+                   HexletCode::Text.new(@obj.public_send(attr), attr, params)
+                 else
+                   HexletCode::Input.new({ name: attr.to_s, type: 'text', value: @obj.public_send(attr) },
+                                         params)
+                 end
     end
 
     def submit(name = 'Save')
