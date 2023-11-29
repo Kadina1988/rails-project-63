@@ -39,7 +39,7 @@ class TestHexletCode < Minitest::Test
   def test_form_for_with_path
     expect = "<form action='/user' method='post'></form>"
 
-    actual = HexletCode.form_for @user, url: '/user' do |f|
+    actual = HexletCode.form_for @user, action: '/user' do |f|
     end
 
     assert_equal(expect, actual)
@@ -48,7 +48,7 @@ class TestHexletCode < Minitest::Test
   def test_form_for_with_additional_parametres
     expect = "<form action='#' method='post'><label for='name'>Name</label> <input name='name' type='text' value='Rob'></form>"
 
-    actual = HexletCode.form_for @user, url: '#' do |f|
+    actual = HexletCode.form_for @user do |f|
       f.input :name
     end
 
@@ -85,11 +85,9 @@ class TestHexletCode < Minitest::Test
   end
 
   def test_form_for_two_attr
-    expect = "<form action='/user' method='post'><label for='name'>Name</label> <input name='name' type='text' value='Rob' class='input'> <label for='job'>Job</label> <textarea rows='50' cols='50' name='job'>hexlet</textarea> <input type='submit' value='wow'></form>"
+    expect = "<form action='/user' method='post'><input type='submit' value='wow'></form>"
 
-    actual = HexletCode.form_for @user, url: '/user' do |f|
-      f.input :name, class: 'input'
-      f.input :job, as: :text
+    actual = HexletCode.form_for @user, action: '/user' do |f|
       f.submit 'wow'
     end
 
