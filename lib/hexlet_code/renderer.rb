@@ -22,9 +22,9 @@ module HexletCode
 
     def form_params(params)
       if params.key?(:class)
-        { action: params[:action] || '#', method: params[:method] || 'post', class: params[:class] }
+        { action: params[:url] || '#', method: params[:method] || 'post', class: params[:class] }
       else
-        { action: params[:action] || '#', method: params[:method] || 'post' }
+        { action: params[:url] || '#', method: params[:method] || 'post' }
       end
     end
 
