@@ -27,27 +27,9 @@ class TestHexletCode < Minitest::Test
     assert_equal(expect, actual)
   end
 
-  def test_form_for_without_path
-    expect = "<form action='#' method='post'></form>"
-
-    actual = HexletCode.form_for @user do |f|
-    end
-
-    assert_equal(expect, actual)
-  end
-
-  def test_form_for_with_path
-    expect = "<form action='/user' method='post'></form>"
-
-    actual = HexletCode.form_for @user, url: '/user' do |f|
-    end
-
-    assert_equal(expect, actual)
-  end
-
   def test_form_for_with_additional_parametres
-    expect = "<form action='#' method='post'><label for='name'>Name</label> <input name='name' type='text' value='Rob'></form>"
-
+    expect = "<form action='#' method='post'>"\
+               "<label for='name'>Name</label> <input name='name' type='text' value='Rob'></form>"
     actual = HexletCode.form_for @user do |f|
       f.input :name
     end
@@ -56,16 +38,19 @@ class TestHexletCode < Minitest::Test
   end
 
   def test_form_for_with_class
-    expect = "<form action='#' method='post'><label for='name'>Name</label> <input name='name' type='text' value='Rob' class='input'></form>"
+    expect = "<form action='/user' method='post'>"\
+                "<label for='name'>Name</label> <input name='name' type='text' value='Rob' class='input'></form>"
 
-    actual = HexletCode.form_for @user do |f|
+    actual = HexletCode.form_for @user, url: '/user' do |f|
       f.input :name, class: 'input'
     end
+
     assert_equal(expect, actual)
   end
 
   def test_form_for_with_defolt_value
-    expect = "<form action='#' method='post'><label for='job'>Job</label> <textarea rows='50' cols='50' name='job'>hexlet</textarea></form>"
+    expect = "<form action='#' method='post'>"\
+               "<label for='job'>Job</label> <textarea rows='50' cols='50' name='job'>hexlet</textarea></form>"
 
     actual = HexletCode.form_for @user do |f|
       f.input :job, as: :text
@@ -75,7 +60,8 @@ class TestHexletCode < Minitest::Test
   end
 
   def test_form_for_with_user_value
-    expect = "<form action='#' method='post'><label for='job'>Job</label> <textarea rows='55' cols='55' name='job'>hexlet</textarea></form>"
+    expect = "<form action='#' method='post'>"\
+               "<label for='job'>Job</label> <textarea rows='55' cols='55' name='job'>hexlet</textarea></form>"
 
     actual = HexletCode.form_for @user do |f|
       f.input :job, as: :text, rows: 55, cols: 55
