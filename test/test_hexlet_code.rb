@@ -3,6 +3,8 @@
 require_relative 'test_helper'
 
 class TestHexletCode < Minitest::Test
+  include TestHelpers
+
   User = Struct.new(:name, :job, keyword_init: true)
 
   def setup
@@ -28,8 +30,9 @@ class TestHexletCode < Minitest::Test
   end
 
   def test_form_for_with_additional_parametres
-    expect = "<form action='#' method='post'>"\
-               "<label for='name'>Name</label> <input name='name' type='text' value='Rob'></form>"
+    expect = get_fixtures('label_input')
+    expect.chomp!
+
     actual = HexletCode.form_for @user do |f|
       f.input :name
     end
@@ -38,8 +41,8 @@ class TestHexletCode < Minitest::Test
   end
 
   def test_form_for_with_class
-    expect = "<form action='/user' method='post'>"\
-                "<label for='name'>Name</label> <input name='name' type='text' value='Rob' class='input'></form>"
+    expect = get_fixtures('input_with_class')
+    expect.chomp!
 
     actual = HexletCode.form_for @user, url: '/user' do |f|
       f.input :name, class: 'input'
@@ -49,8 +52,8 @@ class TestHexletCode < Minitest::Test
   end
 
   def test_form_for_with_defolt_value
-    expect = "<form action='#' method='post'>"\
-               "<label for='job'>Job</label> <textarea rows='50' cols='50' name='job'>hexlet</textarea></form>"
+    expect = get_fixtures('textarea')
+    expect.chomp!
 
     actual = HexletCode.form_for @user do |f|
       f.input :job, as: :text
@@ -60,8 +63,8 @@ class TestHexletCode < Minitest::Test
   end
 
   def test_form_for_with_user_value
-    expect = "<form action='#' method='post'>"\
-               "<label for='job'>Job</label> <textarea rows='55' cols='55' name='job'>hexlet</textarea></form>"
+    expect = get_fixtures('textarea_with_params')
+    expect.chomp!
 
     actual = HexletCode.form_for @user do |f|
       f.input :job, as: :text, rows: 55, cols: 55
