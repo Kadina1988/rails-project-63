@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
 require_relative 'hexlet_code/version'
-require_relative 'hexlet_code/tag'
-require_relative 'hexlet_code/form'
-require_relative 'hexlet_code/renderer'
+# require_relative 'hexlet_code/tag'
+# require_relative 'hexlet_code/form'
+# require_relative 'hexlet_code/renderer'
 
 module HexletCode
-  autoload(:Tag, './lib/hexlet_code/tag')
-  autoload(:Form, './lib/hexlet_code/form.rb')
-  autoload(:Renderer, './lib/hexlet_code/renderer.rb')
+  autoload(:Tag, File.join(File.dirname(__FILE__), '/hexlet_code/tag.rb'))
+  autoload(:Form, File.join(File.dirname(__FILE__), '/hexlet_code/form.rb'))
+  autoload(:Renderer, File.join(File.dirname(__FILE__), '/hexlet_code/renderer.rb'))
 
   def self.form_for(obj, params = {})
     form = Form.new(obj)
