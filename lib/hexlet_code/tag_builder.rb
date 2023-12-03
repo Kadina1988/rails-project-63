@@ -2,22 +2,14 @@
 
 module HexletCode
   class TagBuilder
-    def create_html_tag(tag, params)
-      if params.empty?
-        "<#{tag}>"
-      else
-        with_params(tag, params)
-      end
+    def create_html_tag(tag, params = {})
+      "<#{tag}" + " #{with_params(params)}>"
     end
 
     private
 
-    def with_params(tag, params)
-      arr_tags = []
-      arr_tags << tag
-      arr_tags << params.map { |k, v| "#{k}='#{v}'" }.join(' ')
-      tag_param = arr_tags.join(' ')
-      "<#{tag_param}>"
+    def with_params(params)
+      params.map { |k, v| "#{k}='#{v}'" }.join(' ')
     end
   end
 end

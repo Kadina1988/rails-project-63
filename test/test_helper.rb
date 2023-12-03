@@ -7,6 +7,6 @@ require 'minitest/autorun'
 
 module TestHelpers
   def get_fixtures(name)
-    File.read("test/fixtures/#{name}.yml")
+    File.read("test/fixtures/#{name}.html")
   end
 end

@@ -1,9 +1,6 @@
 # frozen_string_literal: true
 
 require_relative 'hexlet_code/version'
-require_relative 'hexlet_code/form'
-require_relative 'hexlet_code/renderer'
-require_relative 'hexlet_code/tag'
 
 module HexletCode
   autoload(:Tag, './lib/hexlet_code/tag')

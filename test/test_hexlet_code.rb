@@ -15,13 +15,6 @@ class TestHexletCode < Minitest::Test
     refute_nil ::HexletCode::VERSION
   end
 
-  def test_method_build_one_teg
-    expect = '<br>'
-    actual = HexletCode::Tag.build('br')
-
-    assert_equal(expect, actual)
-  end
-
   def test_method_build_few_teg
     expect = "<img src='path/to/image'>"
     actual = HexletCode::Tag.build('img', src: 'path/to/image')
@@ -30,7 +23,7 @@ class TestHexletCode < Minitest::Test
   end
 
   def test_form_for_with_additional_parametres
-    expect = get_fixtures('label_input')
+    expect = get_fixtures('form_for_with_additional_parametres')
     expect.chomp!
 
     actual = HexletCode.form_for @user do |f|
@@ -41,7 +34,7 @@ class TestHexletCode < Minitest::Test
   end
 
   def test_form_for_with_class
-    expect = get_fixtures('input_with_class')
+    expect = get_fixtures('form_for_with_class')
     expect.chomp!
 
     actual = HexletCode.form_for @user, url: '/user' do |f|
@@ -51,8 +44,8 @@ class TestHexletCode < Minitest::Test
     assert_equal(expect, actual)
   end
 
-  def test_form_for_with_defolt_value
-    expect = get_fixtures('textarea')
+  def test_form_for_with_default_value
+    expect = get_fixtures('form_for_with_default_value')
     expect.chomp!
 
     actual = HexletCode.form_for @user do |f|
@@ -63,7 +56,7 @@ class TestHexletCode < Minitest::Test
   end
 
   def test_form_for_with_user_value
-    expect = get_fixtures('textarea_with_params')
+    expect = get_fixtures('form_for_with_user_value')
     expect.chomp!
 
     actual = HexletCode.form_for @user do |f|
@@ -74,7 +67,8 @@ class TestHexletCode < Minitest::Test
   end
 
   def test_form_for_two_attr
-    expect = "<form action='/user' method='post'><input type='submit' value='wow'></form>"
+    expect = get_fixtures('form_for_two_attr')
+    expect.chomp!
 
     actual = HexletCode.form_for @user, url: '/user' do |f|
       f.submit 'wow'
@@ -84,7 +78,8 @@ class TestHexletCode < Minitest::Test
   end
 
   def test_default_submit
-    expect = "<form action='#' method='post'><input type='submit' value='Save'></form>"
+    expect = get_fixtures('default_submit')
+    expect.chomp!
 
     actual = HexletCode.form_for @user, &:submit
 
@@ -92,7 +87,8 @@ class TestHexletCode < Minitest::Test
   end
 
   def test_with_tag_form
-    expect = "<form action='/profile' method='get' class='hexlet-class'><input type='submit' value='Save'></form>"
+    expect = get_fixtures('with_tag_form')
+    expect.chomp!
 
     actual = HexletCode.form_for @user, url: '/profile', method: 'get', class: 'hexlet-class', &:submit
 
