@@ -4,36 +4,29 @@ module HexletCode
   class Renderer
     attr_reader :args
 
-    def initialize(obj, tags)
+    def initialize(obj, tags, parametres)
+      @params_for_form = parametres
       @form = obj
       @args = tags
       @html = []
     end
 
-    def render(params = {})
-      generate_form(params) { generate_field }
+    def render(_params = {})
+      generate_form(@params_for_form) { generate_field }
     end
 
     private
 
-    def generate_form(params = {}, &block)
-      HexletCode::Tag.build('form', form_params(params)) { block.call }
-    end
-
-    def form_params(params)
-      if params.key?(:class)
-        { action: params[:url] || '#', method: params[:method] || 'post', class: params[:class] }
-      else
-        { action: params[:url] || '#', method: params[:method] || 'post' }
-      end
+    def generate_form(params, &block)
+      HexletCode::Tag.build('form', params) { block.call }
     end
 
     def generate_field
       @args.each do |arg|
-        @html << if arg.content.nil?
+        @html << if arg.text.nil?
                    HexletCode::Tag.build(arg.tag, arg.attrs)
                  else
-                   HexletCode::Tag.build(arg.tag, arg.attrs) { arg.content }
+                   HexletCode::Tag.build(arg.tag, arg.attrs) { arg.text }
                  end
       end
       @html.join(' ')

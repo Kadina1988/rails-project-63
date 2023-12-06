@@ -63,12 +63,12 @@ end
 
 ```
 
-create type Sumbit
+create type Submit
 
 ```
 
 HexletCode.form_for @object do |f|
-  f.sumbit
+  f.submit
 end
 
 =>
