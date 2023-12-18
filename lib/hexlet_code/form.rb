@@ -3,6 +3,7 @@
 require_relative 'form/input'
 require_relative 'form/text'
 require_relative 'form/label'
+require 'active_support/all'
 
 module HexletCode
   class Form
