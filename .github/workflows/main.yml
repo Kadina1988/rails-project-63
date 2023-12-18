@@ -31,6 +31,9 @@ jobs:
       - name: Run Rubocop
         run: make lint
 
+      - name: Require active_support
+        run: require 'active_support/all'
+
       - name: Run Testing
         run: make testing
 
