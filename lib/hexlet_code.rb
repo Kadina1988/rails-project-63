@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative 'hexlet_code/version'
+require 'active_support/all'
 
 module HexletCode
   autoload(:Tag, File.join(File.dirname(__FILE__), '/hexlet_code/tag.rb'))
