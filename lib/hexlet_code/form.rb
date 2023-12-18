@@ -9,34 +9,31 @@ module HexletCode
     attr_reader :fields, :obj, :form_params
 
     def initialize(obj, params = {})
-      @form_params = generate_form_params(params)
+      @form_params = set_params(params)
       @obj = obj
       @fields = []
     end
 
     def input(attr, params = {})
       @fields << HexletCode::Form::Label.new(attr, @obj.public_send(attr))
-
-      @fields << if params.key?(:as) && (params[:as] = :text)
-                   HexletCode::Form::Text.new(@obj.public_send(attr), attr, params)
-                 else
-                   HexletCode::Form::Input.new({ name: attr.to_s, type: 'text', value: @obj.public_send(attr) },
-                                               params)
-                 end
+      @fields << "HexletCode::Form::#{(params[:as] || 'input').capitalize}".constantize.new(@obj.public_send(attr),
+                                                                                            attr,
+                                                                                            params)
     end
 
     def submit(name = 'Save')
-      @fields << HexletCode::Form::Input.new(type: 'submit', value: name)
+      @fields << HexletCode::Form::Input.new(name, nil, type: 'submit')
     end
 
     private
 
-    def generate_form_params(params)
-      if params.key?(:class)
-        { action: params[:url] || '#', method: params[:method] || 'post', class: params[:class] }
-      else
-        { action: params[:url] || '#', method: params[:method] || 'post' }
-      end
+    def set_params(params = {})
+      default_params = { action: '#', method: 'post' }
+
+      default_params[:action] = params[:url] if params.key?(:url)
+      params.delete(:url)
+
+      default_params.merge!(params)
     end
   end
 end

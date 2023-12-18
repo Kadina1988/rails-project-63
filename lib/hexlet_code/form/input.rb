@@ -5,10 +5,19 @@ module HexletCode
     class Input
       attr_reader :tag, :attrs, :text
 
-      def initialize(attrs, params = {})
+      def initialize(value, attr, params = {})
         @tag = 'input'
-        @attrs = attrs.merge!(params)
-        @content = nil
+        @attrs = {}
+        @attrs[:name] = attr unless attr.nil?
+        @attrs[:type] = 'text' || params[:type]
+        @attrs[:value] = value
+        add_attrs(params)
+      end
+
+      private
+
+      def add_attrs(params)
+        @attrs.merge!(params)
       end
     end
   end
