@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require_relative 'lib/hexlet_code/version'
-require 'rubygems'
 
 Gem::Specification.new do |spec|
   spec.name = 'hexlet_code'
