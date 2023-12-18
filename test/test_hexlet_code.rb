@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require_relative 'test_helper'
-require 'active_support/all'
 
 class TestHexletCode < Minitest::Test
   include TestHelpers
