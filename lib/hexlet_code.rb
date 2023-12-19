@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 require 'active_support/all'
-gem 'activesupport'
-
 require_relative 'hexlet_code/version'
 
 module HexletCode

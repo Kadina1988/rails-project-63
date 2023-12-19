@@ -8,3 +8,7 @@ gem 'activesupport'
 gem 'minitest', '~> 5.0'
 gem 'rake', '~> 13.0'
 gem 'rubocop', require: false
+
+group :test do
+  gem 'activesupport'
+end
