@@ -8,6 +8,7 @@ module HexletCode
       def initialize(text, attr, params)
         @tag = 'textarea'
         @text = text
+
         @attrs = collecting_attrs(attr, params)
       end
 
