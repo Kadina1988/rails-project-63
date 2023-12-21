@@ -16,9 +16,9 @@ module HexletCode
 
     def input(attr, params = {})
       @fields << HexletCode::Form::Label.new(attr, @obj.public_send(attr))
-      @fields << "HexletCode::Form::#{(params[:as] || 'input').capitalize}".constantize.new(@obj.public_send(attr),
-                                                                                            attr,
-                                                                                            params)
+      @fields << Object.const_get("HexletCode::Form::#{(params[:as] || 'input').capitalize}").new(@obj.public_send(attr),
+                                                                                                  attr,
+                                                                                                  params)
     end
 
     def submit(name = 'Save')
