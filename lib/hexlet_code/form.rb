@@ -30,9 +30,9 @@ module HexletCode
       default_params = { action: '#', method: 'post' }
 
       default_params[:action] = params[:url] if params.key?(:url)
-      params.delete(:url)
+      copy_params = params.except(:url)
 
-      default_params.merge!(params)
+      default_params.merge!(copy_params)
     end
   end
 end
